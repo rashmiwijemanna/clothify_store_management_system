@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.admin.LoginPageFormController">
+   <children>
+      <MediaView fx:id="mediaView" fitHeight="550.0" fitWidth="550.0" layoutX="10.0" layoutY="10.0" />
+      <Label layoutX="762.0" layoutY="56.0" text=" Welcome Admin" />
+      <TextField layoutX="725.0" layoutY="187.0" />
+      <TextField layoutX="725.0" layoutY="278.0" />
+      <Button layoutX="777.0" layoutY="334.0" mnemonicParsing="false" onAction="#loginBtn" text="Login" />
+      <Label layoutX="728.0" layoutY="247.0" prefHeight="26.0" prefWidth="54.0" text="Password" />
+      <Label layoutX="728.0" layoutY="152.0" prefHeight="26.0" prefWidth="34.0" text="Email" />
+      <Button layoutX="834.0" layoutY="249.0" mnemonicParsing="false" text="Forgot Password ?" />
+      <Label layoutX="707.0" layoutY="404.0" prefHeight="26.0" prefWidth="139.0" text="Dont have an acoount ?" />
+      <Button layoutX="846.0" layoutY="404.0" mnemonicParsing="false" text="Sign up" />
+      <Button layoutX="846.0" layoutY="505.0" mnemonicParsing="false" onAction="#loginBtnEmployee" text="Log In" />
+      <Label layoutX="698.0" layoutY="504.0" prefHeight="26.0" prefWidth="139.0" text="Are you an employee ?" />
+   </children>
+</AnchorPane>
