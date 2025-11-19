@@ -36,8 +36,16 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoy {
     }
 
     @Override
-    public String getLastEmployeeId() {
-        return "";
+    public String getLastEmployeeId() throws SQLException {
+        String sql="SELECT EmpId FROM Employee ORDER BY EmpId DESC LIMIT 1";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            return resultSet.getString(1);
+
+        }
+        return null;
     }
 
     @Override

@@ -15,7 +15,7 @@
       <Label fx:id="timeLbl" layoutX="98.0" layoutY="66.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
       <Label layoutX="54.0" layoutY="123.0" text="Employee Id" textFill="WHITE" />
       <Label layoutX="291.0" layoutY="123.0" text="Name" textFill="WHITE" />
-      <TextField fx:id="empIdTxt" layoutX="51.0" layoutY="145.0" />
+      <TextField fx:id="empIdTxt" editable="false" layoutX="51.0" layoutY="145.0" />
       <TextField fx:id="empNameTxt" layoutX="291.0" layoutY="145.0" />
       <Label layoutX="54.0" layoutY="213.0" text="Email" textFill="WHITE" />
       <TextField fx:id="empEmailTxt" layoutX="51.0" layoutY="231.0" />

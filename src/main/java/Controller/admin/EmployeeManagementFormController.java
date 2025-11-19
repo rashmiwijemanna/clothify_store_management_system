@@ -88,6 +88,8 @@ public class EmployeeManagementFormController implements Initializable {
 
        employeeService.add(employee);
        loadEmployeeDetails();
+       clearFeilds();
+       empIdTxt.setText(employeeService.generateEmployeeId());
 
 
     }
@@ -112,6 +114,11 @@ public class EmployeeManagementFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+           empIdTxt.setText(employeeService.generateEmployeeId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -146,6 +153,13 @@ public class EmployeeManagementFormController implements Initializable {
         employeeTbl.setItems(employeeService.getAllEmployeeDetails());
 
 
+    }
+    private void clearFeilds(){
+        empNameTxt.setText(null);
+        empEmailTxt.setText(null);
+        empPasswordTxt.setText(null);
+        empAddressTxt.setText(null);
+        empPhoneNumberTxt.setText(null);
     }
 
 }

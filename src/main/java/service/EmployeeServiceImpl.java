@@ -44,4 +44,16 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void delete(String id)  {
         employeeRepositoryImpl.delete(id);
     }
+
+    @Override
+    public String generateEmployeeId() throws SQLException {
+        String lastId=employeeRepositoryImpl.getLastEmployeeId();
+        if(lastId==null){
+            return "E001";
+        }
+        int number=Integer.parseInt(lastId.substring(1));
+        number++;
+
+        return String.format("E%03d",number);
+    }
 }
