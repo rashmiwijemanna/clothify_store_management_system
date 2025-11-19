@@ -45,7 +45,9 @@ public class SidebarFormController implements Initializable {
     }
 
     @FXML
-    void suplierManagementBtn(ActionEvent event) {
+    void suplierManagementBtn(ActionEvent event) throws IOException {
+        AnchorPane pane=FXMLLoader.load(getClass().getResource("/view/Admin/SuplierManagement.fxml"));
+        loadUi.getChildren().setAll(pane);
 
     }
 
