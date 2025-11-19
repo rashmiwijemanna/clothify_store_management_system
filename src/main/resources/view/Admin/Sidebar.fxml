@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="530.0" prefWidth="154.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020c15" height="542.0" stroke="BLACK" strokeType="INSIDE" width="197.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020c15" height="730.0" stroke="BLACK" strokeType="INSIDE" width="197.0" />
             <Label layoutX="49.0" layoutY="36.0" prefHeight="31.0" prefWidth="126.0" text="CLOTHIFY" textFill="#f2e8e8">
                <font>
                   <Font name="Yu Gothic UI Regular" size="21.0" />
@@ -23,6 +23,6 @@
             <Button layoutX="37.0" layoutY="244.0" mnemonicParsing="false" onAction="#itemManagementBtn" prefHeight="26.0" prefWidth="142.0" text="Item Management" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="loadUi" layoutX="196.0" prefHeight="542.0" prefWidth="666.0" style="-fx-background-color: #020c15;" />
+      <AnchorPane fx:id="loadUi" layoutX="196.0" prefHeight="730.0" prefWidth="666.0" style="-fx-background-color: #020c15;" />
    </children>
 </AnchorPane>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.admin.EmployeeManagementFormController">
+<AnchorPane prefHeight="400.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.admin.EmployeeManagementFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020c15" height="730.0" stroke="BLACK" strokeType="INSIDE" width="841.0" />
       <Label fx:id="dateLbl" layoutX="287.0" layoutY="57.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
@@ -23,7 +23,7 @@
       <TextField fx:id="empAddressTxt" layoutX="469.0" layoutY="231.0" />
       <Label layoutX="665.0" layoutY="213.0" text="Phone Number" textFill="WHITE" />
       <TextField fx:id="empPhoneNumberTxt" layoutX="665.0" layoutY="231.0" />
-      <TableView layoutX="57.0" layoutY="377.0" prefHeight="276.0" prefWidth="578.0">
+      <TableView fx:id="employeeTbl" layoutX="57.0" layoutY="377.0" prefHeight="276.0" prefWidth="578.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="104.79998779296875" text="Id" />
           <TableColumn fx:id="nameCol" prefWidth="73.60003662109375" text="Name" />

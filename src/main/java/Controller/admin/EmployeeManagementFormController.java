@@ -1,12 +1,29 @@
 package Controller.admin;
 
+import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Employee;
+import service.EmployeeService;
+import service.EmployeeServiceImpl;
 
-public class EmployeeManagementFormController {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class EmployeeManagementFormController implements Initializable {
+    ObservableList<Employee>employees= FXCollections.observableArrayList();
+    EmployeeService employeeService=new EmployeeServiceImpl();
 
     @FXML
     private TableColumn<?, ?> addressCol;
@@ -49,9 +66,28 @@ public class EmployeeManagementFormController {
 
     @FXML
     private Label timeLbl;
+    @FXML
+    private TableView<Employee> employeeTbl;
 
     @FXML
-    void addBtn(ActionEvent event) {
+    void addBtn(ActionEvent event) throws SQLException {
+        String empId=empIdTxt.getText();
+        String empName=empNameTxt.getText();
+        String empEmail=empEmailTxt.getText();
+        String empPassword=empPasswordTxt.getText();
+        String empaAddress=empAddressTxt.getText();
+        String empPhoneNumber=empPhoneNumberTxt.getText();
+        Employee employee=new Employee(
+                empId,
+                empName,
+                empEmail,
+                empPassword,
+                empaAddress,
+                empPhoneNumber
+        );
+
+       employeeService.add(employee);
+
 
     }
 
@@ -70,4 +106,25 @@ public class EmployeeManagementFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
+
+
+
+
+
+    }
+
+//    private void loadEmployeeDetails(){
+//        employees.clear();
+//        employeeTbl.setItems(employeeService.getAllEmployeeDetails());
+//
+//    }
 }
