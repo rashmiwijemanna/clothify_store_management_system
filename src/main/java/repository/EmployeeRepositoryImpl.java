@@ -1,10 +1,12 @@
 package repository;
 
 import db.DBConnection;
+import javafx.collections.ObservableList;
 import model.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeeRepositoryImpl implements EmployeeRepositoy {
@@ -23,4 +25,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoy {
         preparedStatement.executeUpdate();
 
     }
+
+    @Override
+    public ResultSet getAllEmployeeDetails() throws SQLException {
+      Connection connection=DBConnection.getInstance().getConnection();
+      PreparedStatement preparedStatement=connection.prepareStatement("Select * FROM Employee;");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return  resultSet;
+
+    }
+
+
 }

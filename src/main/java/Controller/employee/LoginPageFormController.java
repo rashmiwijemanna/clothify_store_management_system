@@ -1,4 +1,4 @@
-package Controller;
+package Controller.employee;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -87,6 +87,7 @@ public class EmployeeManagementFormController implements Initializable {
         );
 
        employeeService.add(employee);
+       loadEmployeeDetails();
 
 
     }
@@ -114,17 +115,34 @@ public class EmployeeManagementFormController implements Initializable {
         passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        try {
+            loadEmployeeDetails();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-
-
-
+        employeeTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->{
+            if(newValue != null){
+                setSelectedValue(newValue);
+            }
+        } );
 
 
     }
 
-//    private void loadEmployeeDetails(){
-//        employees.clear();
-//        employeeTbl.setItems(employeeService.getAllEmployeeDetails());
-//
-//    }
+    private void setSelectedValue(Employee selectedValue){
+        empIdTxt.setText(String.valueOf(selectedValue.getId()));
+        empNameTxt.setText(String.valueOf(selectedValue.getName()));
+        empEmailTxt.setText(String.valueOf(selectedValue.getEmail()));
+        empPasswordTxt.setText(String.valueOf(selectedValue.getPassword()));
+        empAddressTxt.setText(String.valueOf(selectedValue.getAddress()));
+        empPhoneNumberTxt.setText(String.valueOf(selectedValue.getPhoneNumber()));
+    }
+
+    private void loadEmployeeDetails() throws SQLException {
+        employees.clear();
+        employeeTbl.setItems(employeeService.getAllEmployeeDetails());
+
+    }
+
 }
