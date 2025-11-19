@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IntroVideoController">
+
+
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#160170" height="520.0" stroke="BLACK" strokeType="INSIDE" width="349.0" />
+   <MediaView fx:id="mediaView" fitHeight="500" fitWidth="350" visible="true" />
+</StackPane>
