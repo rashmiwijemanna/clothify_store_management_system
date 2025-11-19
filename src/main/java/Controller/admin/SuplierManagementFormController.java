@@ -10,11 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Suplier;
 import service.SuplierService;
 import service.SuplierServiceImpl;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SuplierManagementFormController implements Initializable {
@@ -29,7 +31,7 @@ public class SuplierManagementFormController implements Initializable {
     private TableColumn<?, ?> emailCol;
 
     @FXML
-    private TableView<?> suppliTbl;
+    private TableView<Suplier> suppliTbl;
 
     @FXML
     private TableColumn<?, ?> idCol;
@@ -71,7 +73,7 @@ public class SuplierManagementFormController implements Initializable {
    SuplierService suplierService=new SuplierServiceImpl();
 
     @FXML
-    void addBtn(ActionEvent event) {
+    void addBtn(ActionEvent event) throws SQLException {
         String supId=supIdTxt.getText();
         String supName=supNameTxt.getText();
         String supTitle=supTitleTxt.getValue();
@@ -87,6 +89,9 @@ public class SuplierManagementFormController implements Initializable {
                 supCompany,
                 supPhoneNumber
         );
+        suplierService.add(suplier);
+
+        loadSupplierTbl();
 
 
 
@@ -110,6 +115,38 @@ public class SuplierManagementFormController implements Initializable {
 
         );
         supTitleTxt.setItems(titleTypes);
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        companyCol.setCellValueFactory(new PropertyValueFactory<>("company"));
+        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
+        try {
+            loadSupplierTbl();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        suppliTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if(newValue != null){
+                setSelectedValue(newValue);
+            }
+        });
+
+
 
     }
+
+    private void loadSupplierTbl() throws SQLException {
+        suppliTbl.setItems(suplierService.getAllSupplierDetails());
+    }
+    private void setSelectedValue(Suplier selectedValue ){
+        supIdTxt.setText(String.valueOf(selectedValue.getId()));
+        supNameTxt.setText(String.valueOf(selectedValue.getName()));
+        supTitleTxt.setValue(String.valueOf(selectedValue.getTitle()));
+        supEmailTxt.setText(String.valueOf(selectedValue.getEmail()));
+        supCompanyTxt.setText(String.valueOf(selectedValue.getCompany()));
+        subPhoneNumberTxt.setText(String.valueOf(selectedValue.getPhoneNumber()));
+    }
+
 }

@@ -6,10 +6,11 @@ import model.Employee;
 import model.Suplier;
 import repository.SuplierRepositoryImpl;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SuplierServiceImpl implements SuplierService{
-    ObservableList<Employee>employees= FXCollections.observableArrayList();
+    ObservableList<Suplier>supliers= FXCollections.observableArrayList();
     SuplierRepositoryImpl suplierRepositoryImpl=new SuplierRepositoryImpl();
     @Override
     public void add(Suplier suplier) throws SQLException {
@@ -34,7 +35,20 @@ public class SuplierServiceImpl implements SuplierService{
     }
 
     @Override
-    public ObservableList<Suplier> getAllSupplierDetails() {
-        return null;
+    public ObservableList<Suplier> getAllSupplierDetails() throws SQLException {
+     supliers.clear();
+        ResultSet allSupplierDetails = suplierRepositoryImpl.getAllSupplierDetails();
+        while (allSupplierDetails.next()){
+            supliers.add(new Suplier(
+                    allSupplierDetails.getString("Id"),
+                    allSupplierDetails.getString("Name"),
+                    allSupplierDetails.getString("Title"),
+                    allSupplierDetails.getString("Email"),
+                    allSupplierDetails.getString("Company"),
+                    allSupplierDetails.getString("PhoneNumber")
+            ));
+        }
+            return supliers;
+
     }
 }

@@ -6,6 +6,7 @@ import model.Suplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SuplierRepositoryImpl implements SuplierRepository {
@@ -41,7 +42,11 @@ public class SuplierRepositoryImpl implements SuplierRepository {
     }
 
     @Override
-    public ObservableList<Suplier> getAllSupplierDetails() {
-        return null;
+    public ResultSet getAllSupplierDetails() throws SQLException {
+       Connection connection=DBConnection.getInstance().getConnection();
+       PreparedStatement preparedStatement=connection.prepareStatement("SELECT * FROM Supplier;");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+
     }
 }

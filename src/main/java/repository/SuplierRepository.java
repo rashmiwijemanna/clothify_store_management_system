@@ -3,6 +3,7 @@ package repository;
 import javafx.collections.ObservableList;
 import model.Suplier;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public interface SuplierRepository {
@@ -10,5 +11,5 @@ public interface SuplierRepository {
     void update(Suplier suplier);
     void delete(String id);
     String getLastSupplierId();
-    ObservableList<Suplier> getAllSupplierDetails();
+   ResultSet getAllSupplierDetails() throws SQLException;
 }
