@@ -25,7 +25,8 @@ public class SuplierServiceImpl implements SuplierService{
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws SQLException {
+        suplierRepositoryImpl.delete(id);
 
     }
 
@@ -37,7 +38,7 @@ public class SuplierServiceImpl implements SuplierService{
         }
         int number = Integer.parseInt(lastSupplierId.substring(1));
         number++;
-        return String.format("E%03d",number);
+        return String.format("S%03d",number);
     }
 
     @Override

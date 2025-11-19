@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public interface SuplierRepository {
     void add(Suplier suplier) throws SQLException;
     void update(Suplier suplier);
-    void delete(String id);
+    void delete(String id) throws SQLException;
     String getLastSupplierId() throws SQLException;
    ResultSet getAllSupplierDetails() throws SQLException;
 }

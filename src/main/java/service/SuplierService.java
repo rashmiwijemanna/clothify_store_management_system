@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public interface SuplierService {
     void add(Suplier suplier) throws SQLException;
     void update(Suplier suplier);
-    void delete(String id);
+    void delete(String id) throws SQLException;
      String generateSupplierId() throws SQLException;
     ObservableList<Suplier> getAllSupplierDetails() throws SQLException;
 }

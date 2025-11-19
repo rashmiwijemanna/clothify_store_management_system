@@ -100,7 +100,10 @@ public class SuplierManagementFormController implements Initializable {
     }
 
     @FXML
-    void deleteBtn(ActionEvent event) {
+    void deleteBtn(ActionEvent event) throws SQLException {
+        suplierService.delete(supIdTxt.getText());
+        loadSupplierTbl();
+        clearFeilds();
 
 
     }
@@ -112,6 +115,11 @@ public class SuplierManagementFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            supIdTxt.setText(suplierService.generateSupplierId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         ObservableList<String>titleTypes=FXCollections.observableArrayList(
                 "Mr",
                 "Ms"
@@ -152,13 +160,13 @@ public class SuplierManagementFormController implements Initializable {
         subPhoneNumberTxt.setText(String.valueOf(selectedValue.getPhoneNumber()));
     }
 
-    private void clearFeilds(){
-        supIdTxt.setText(null);
+    private void clearFeilds() throws SQLException {
         supNameTxt.setText(null);
         supTitleTxt.setValue(null);
         supEmailTxt.setText(null);
         supCompanyTxt.setText(null);
         subPhoneNumberTxt.setText(null);
+        supIdTxt.setText(suplierService.generateSupplierId());
     }
 
 }

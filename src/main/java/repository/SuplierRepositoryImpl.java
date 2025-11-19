@@ -32,7 +32,11 @@ public class SuplierRepositoryImpl implements SuplierRepository {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws SQLException {
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM Supplier WHERE Id = ?");
+        preparedStatement.setObject(1,id);
+        preparedStatement.executeUpdate();
 
 
     }
