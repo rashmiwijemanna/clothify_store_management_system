@@ -14,6 +14,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public ObservableList<Employee> getAllEmployeeDetails() throws SQLException {
+        employee.clear();
         ResultSet allEmployeeDetails = employeeRepositoryImpl.getAllEmployeeDetails();
         while(allEmployeeDetails.next()){
             employee.add(new Employee(
@@ -37,5 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void add(Employee employee) throws SQLException {
         employeeRepositoryImpl.add(employee);
 
+    }
+
+    @Override
+    public void delete(String id)  {
+        employeeRepositoryImpl.delete(id);
     }
 }

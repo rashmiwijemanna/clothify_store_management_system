@@ -9,4 +9,6 @@ import java.sql.SQLException;
 public interface EmployeeRepositoy {
     void add(Employee employee) throws SQLException;
     ResultSet getAllEmployeeDetails() throws SQLException;
+    String getLastEmployeeId();
+    void delete(String id) ;
 }

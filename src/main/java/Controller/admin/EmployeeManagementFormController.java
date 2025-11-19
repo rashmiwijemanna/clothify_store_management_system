@@ -98,7 +98,10 @@ public class EmployeeManagementFormController implements Initializable {
     }
 
     @FXML
-    void deleteBtn(ActionEvent event) {
+    void deleteBtn(ActionEvent event) throws SQLException {
+        Employee selectedItem = employeeTbl.getSelectionModel().getSelectedItem();
+        employeeService.delete(selectedItem.getId());
+        loadEmployeeDetails();
 
     }
 
@@ -140,8 +143,8 @@ public class EmployeeManagementFormController implements Initializable {
     }
 
     private void loadEmployeeDetails() throws SQLException {
-        employees.clear();
         employeeTbl.setItems(employeeService.getAllEmployeeDetails());
+
 
     }
 

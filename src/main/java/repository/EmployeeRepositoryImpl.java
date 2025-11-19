@@ -35,5 +35,24 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoy {
 
     }
 
+    @Override
+    public String getLastEmployeeId() {
+        return "";
+    }
+
+    @Override
+    public void delete(String id) {
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM Employee WHERE EmpId = ?");
+            preparedStatement.setObject(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 }
