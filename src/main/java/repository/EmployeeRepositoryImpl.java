@@ -62,5 +62,19 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoy {
 
     }
 
+    @Override
+    public void update(Employee employee) throws SQLException {
+        String SQL="UPDATE Employee SET EmpName = ?, Email = ?, Password = ?, Address = ?, PhoneNumber = ? WHERE EmpId = ?";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(SQL);
+        preparedStatement.setObject(1,employee.getName());
+        preparedStatement.setObject(2,employee.getEmail());
+        preparedStatement.setObject(3,employee.getPassword());
+        preparedStatement.setObject(4,employee.getAddress());
+        preparedStatement.setObject(5,employee.getPhoneNumber());
+        preparedStatement.setObject(6,employee.getId());
+        preparedStatement.executeUpdate();
+    }
+
 
 }

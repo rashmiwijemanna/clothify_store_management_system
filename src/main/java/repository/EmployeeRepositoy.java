@@ -11,4 +11,5 @@ public interface EmployeeRepositoy {
     ResultSet getAllEmployeeDetails() throws SQLException;
     String getLastEmployeeId() throws SQLException;
     void delete(String id) ;
+    void update(Employee employee) throws SQLException;
 }

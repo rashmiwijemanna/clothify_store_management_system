@@ -104,11 +104,33 @@ public class EmployeeManagementFormController implements Initializable {
         Employee selectedItem = employeeTbl.getSelectionModel().getSelectedItem();
         employeeService.delete(selectedItem.getId());
         loadEmployeeDetails();
+        empIdTxt.setText(null);
+        clearFeilds();
+        empIdTxt.setText(employeeService.generateEmployeeId());
 
     }
 
     @FXML
-    void updateBtn(ActionEvent event) {
+    void updateBtn(ActionEvent event) throws SQLException {
+        String empId=empIdTxt.getText();
+       String empName=empNameTxt.getText();
+       String empEmail=empEmailTxt.getText();
+       String empPassword=empPasswordTxt.getText();
+       String empAddress=empAddressTxt.getText();
+       String empPhoneNumber=empPhoneNumberTxt.getText();
+       Employee employee=new Employee(
+               empId,
+               empName,
+               empEmail,
+               empPassword,
+               empAddress,
+               empPhoneNumber
+       );
+       employeeService.update(employee);
+       loadEmployeeDetails();
+       clearFeilds();
+
+
 
     }
 

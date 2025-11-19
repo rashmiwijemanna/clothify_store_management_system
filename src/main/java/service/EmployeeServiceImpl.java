@@ -56,4 +56,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         return String.format("E%03d",number);
     }
+
+    @Override
+    public void update(Employee employee) throws SQLException {
+        employeeRepositoryImpl.update(employee);
+    }
 }

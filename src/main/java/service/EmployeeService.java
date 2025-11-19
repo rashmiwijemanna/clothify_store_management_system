@@ -10,4 +10,5 @@ public interface EmployeeService {
      void add(Employee employee) throws SQLException;
      void delete(String id) ;
      String generateEmployeeId() throws SQLException;
+     void update(Employee employee) throws SQLException;
 }
