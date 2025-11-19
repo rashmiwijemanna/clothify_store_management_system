@@ -23,7 +23,7 @@
       <TextField fx:id="supEmailTxt" layoutX="61.0" layoutY="241.0" />
       <Label layoutX="502.0" layoutY="223.0" text="Phone Number" textFill="WHITE" />
       <TextField fx:id="subPhoneNumberTxt" layoutX="502.0" layoutY="241.0" />
-      <TableView fx:id="employeeTbl" layoutX="67.0" layoutY="387.0" prefHeight="276.0" prefWidth="667.0">
+      <TableView fx:id="suppliTbl" layoutX="67.0" layoutY="387.0" prefHeight="276.0" prefWidth="667.0">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="104.79998779296875" text="Id" />
             <TableColumn fx:id="nameCol" prefWidth="73.60003662109375" text="Name" />
