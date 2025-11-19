@@ -92,6 +92,7 @@ public class SuplierManagementFormController implements Initializable {
         suplierService.add(suplier);
 
         loadSupplierTbl();
+        clearFeilds();
 
 
 
@@ -147,6 +148,15 @@ public class SuplierManagementFormController implements Initializable {
         supEmailTxt.setText(String.valueOf(selectedValue.getEmail()));
         supCompanyTxt.setText(String.valueOf(selectedValue.getCompany()));
         subPhoneNumberTxt.setText(String.valueOf(selectedValue.getPhoneNumber()));
+    }
+
+    private void clearFeilds(){
+        supIdTxt.setText(null);
+        supNameTxt.setText(null);
+        supTitleTxt.setValue(null);
+        supEmailTxt.setText(null);
+        supCompanyTxt.setText(null);
+        subPhoneNumberTxt.setText(null);
     }
 
 }
