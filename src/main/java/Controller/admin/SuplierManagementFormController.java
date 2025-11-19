@@ -93,6 +93,7 @@ public class SuplierManagementFormController implements Initializable {
 
         loadSupplierTbl();
         clearFeilds();
+        supIdTxt.setText(suplierService.generateSupplierId());
 
 
 
@@ -100,6 +101,7 @@ public class SuplierManagementFormController implements Initializable {
 
     @FXML
     void deleteBtn(ActionEvent event) {
+
 
     }
 

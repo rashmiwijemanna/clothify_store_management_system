@@ -9,6 +9,6 @@ public interface SuplierService {
     void add(Suplier suplier) throws SQLException;
     void update(Suplier suplier);
     void delete(String id);
-     String getLastSupplierId();
+     String generateSupplierId() throws SQLException;
     ObservableList<Suplier> getAllSupplierDetails() throws SQLException;
 }

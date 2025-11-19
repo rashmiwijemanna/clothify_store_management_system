@@ -34,11 +34,19 @@ public class SuplierRepositoryImpl implements SuplierRepository {
     @Override
     public void delete(String id) {
 
+
     }
 
     @Override
-    public String getLastSupplierId() {
-        return "";
+    public String getLastSupplierId() throws SQLException {
+      String sql="SELECT Id FROM Supplier ORDER BY Id DESC LIMIT 1";
+      Connection connection=DBConnection.getInstance().getConnection();
+      PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+           return resultSet.getString(1);
+        }
+        return null;
     }
 
     @Override

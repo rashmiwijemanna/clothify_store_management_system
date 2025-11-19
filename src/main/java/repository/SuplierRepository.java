@@ -10,6 +10,6 @@ public interface SuplierRepository {
     void add(Suplier suplier) throws SQLException;
     void update(Suplier suplier);
     void delete(String id);
-    String getLastSupplierId();
+    String getLastSupplierId() throws SQLException;
    ResultSet getAllSupplierDetails() throws SQLException;
 }

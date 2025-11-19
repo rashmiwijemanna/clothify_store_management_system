@@ -30,8 +30,14 @@ public class SuplierServiceImpl implements SuplierService{
     }
 
     @Override
-    public String getLastSupplierId() {
-        return "";
+    public String generateSupplierId() throws SQLException {
+        String lastSupplierId = suplierRepositoryImpl.getLastSupplierId();
+        if(lastSupplierId==null){
+            return "S001";
+        }
+        int number = Integer.parseInt(lastSupplierId.substring(1));
+        number++;
+        return String.format("E%03d",number);
     }
 
     @Override
