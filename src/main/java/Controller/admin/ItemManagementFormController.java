@@ -104,7 +104,24 @@ public class ItemManagementFormController implements Initializable {
     }
 
     @FXML
-    void updateBtn(ActionEvent event) {
+    void updateBtn(ActionEvent event) throws SQLException {
+        String id=itemIdTxt.getText();
+        String name=itemNameTxt.getText();
+        double price=Double.parseDouble(priceTxt.getText());
+        int qty=Integer.parseInt(QtyTxt.getText());
+        String supplierId=supIdTxt.getValue();
+
+        Item item1=new Item(
+                id,
+                name,
+                price,
+                qty,
+                supplierId
+        );
+        itemService.update(item1);
+        loadItemTable();
+        clearFeilds();
+        loadComboBox();
 
     }
 

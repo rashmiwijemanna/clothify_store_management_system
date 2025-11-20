@@ -18,7 +18,8 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void update(Item item) {
+    public void update(Item item) throws SQLException {
+        itemRepositoryImpl.update(item);
 
     }
 
