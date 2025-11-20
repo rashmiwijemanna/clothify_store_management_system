@@ -1,14 +1,24 @@
 package Controller.admin;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import model.Suplier;
+import service.SuplierService;
+import service.SuplierServiceImpl;
 
-public class ItemManagementFormController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class ItemManagementFormController implements Initializable {
 
     @FXML
     private TextField QtyTxt;
@@ -44,13 +54,15 @@ public class ItemManagementFormController {
     private TableColumn<?, ?> supIdCol;
 
     @FXML
-    private ComboBox<?> supIdTxt;
+    private ComboBox<String> supIdTxt;
 
     @FXML
     private TableView<?> suppliTbl;
 
     @FXML
     private Label timeLbl;
+    ObservableList<Suplier>supliers= FXCollections.observableArrayList();
+    SuplierService suplierService=new SuplierServiceImpl();
 
     @FXML
     void addBtn(ActionEvent event) {
@@ -67,4 +79,22 @@ public class ItemManagementFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            supliers = suplierService.getAllSupplierDetails();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        ObservableList<String>supIds=FXCollections.observableArrayList();
+                for(Suplier s : supliers){
+                    supIds.add(s.getId());
+        }
+                supIdTxt.setItems(supIds);
+
+
+
+    }
 }
