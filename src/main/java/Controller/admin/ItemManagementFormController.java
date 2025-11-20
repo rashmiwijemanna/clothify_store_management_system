@@ -67,7 +67,7 @@ public class ItemManagementFormController implements Initializable {
     private Label timeLbl;
     ObservableList<Suplier>supliers= FXCollections.observableArrayList();
     SuplierService suplierService=new SuplierServiceImpl();
-//    ObservableList<Item>item=FXCollections.observableArrayList();
+    ObservableList<Item>item=FXCollections.observableArrayList();
     ItemService itemService=new ItemServiceImpl();
 
     @FXML
@@ -93,7 +93,9 @@ public class ItemManagementFormController implements Initializable {
     }
 
     @FXML
-    void deleteBtn(ActionEvent event) {
+    void deleteBtn(ActionEvent event) throws SQLException {
+        itemService.delete(itemIdTxt.getText());
+        loadItemTable();
 
     }
 

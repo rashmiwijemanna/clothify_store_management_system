@@ -23,7 +23,8 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws SQLException {
+        itemRepositoryImpl.delete(id);
 
     }
 
