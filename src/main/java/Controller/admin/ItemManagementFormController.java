@@ -89,6 +89,7 @@ public class ItemManagementFormController implements Initializable {
         itemService.add(item);
         loadItemTable();
         clearFeilds();
+        loadComboBox();
 
 
     }
@@ -98,6 +99,7 @@ public class ItemManagementFormController implements Initializable {
         itemService.delete(itemIdTxt.getText());
         loadItemTable();
         clearFeilds();
+        loadComboBox();
 
     }
 
@@ -113,13 +115,8 @@ public class ItemManagementFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        loadComboBox();
 
-
-        ObservableList<String>supIds=FXCollections.observableArrayList();
-                for(Suplier s : supliers){
-                    supIds.add(s.getId());
-        }
-                supIdTxt.setItems(supIds);
 
                 itemIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
                 itemNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -157,12 +154,21 @@ public class ItemManagementFormController implements Initializable {
 
     }
     private void clearFeilds(){
-        supIdTxt.setItems(null);
+        supIdTxt.setValue(null);
         itemIdTxt.setText(null);
         itemNameTxt.setText(null);
         priceTxt.setText(null);
         QtyTxt.setText(null);
     }
 
+    private void loadComboBox(){
+
+        ObservableList<String>supIds=FXCollections.observableArrayList();
+
+        for(Suplier s : supliers){
+            supIds.add(s.getId());
+        }
+        supIdTxt.setItems(supIds);
+    }
 
 }
