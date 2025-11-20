@@ -2,10 +2,15 @@ package service;
 
 import javafx.collections.ObservableList;
 import model.Item;
+import repository.ItemRepositoryImpl;
+
+import java.sql.SQLException;
 
 public class ItemServiceImpl implements ItemService{
+    ItemRepositoryImpl itemRepositoryImpl=new ItemRepositoryImpl();
     @Override
-    public void add(Item item) {
+    public void add(Item item) throws SQLException {
+        itemRepositoryImpl.add(item);
 
     }
 

@@ -17,7 +17,7 @@
       <Label fx:id="timeLbl" layoutX="118.0" layoutY="86.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
       <Label layoutX="74.0" layoutY="143.0" text="Supplier Id" textFill="WHITE" />
       <Label layoutX="311.0" layoutY="143.0" text="Item Id" textFill="WHITE" />
-      <TextField fx:id="itemIdTxt" editable="false" layoutX="311.0" layoutY="165.0" />
+      <TextField fx:id="itemIdTxt" layoutX="311.0" layoutY="165.0" />
       <Label layoutX="315.0" layoutY="223.0" text="Qty On Hand" textFill="WHITE" />
       <TextField fx:id="priceTxt" layoutX="71.0" layoutY="251.0" />
       <TableView fx:id="suppliTbl" layoutX="101.0" layoutY="391.0" prefHeight="276.0" prefWidth="522.0">
