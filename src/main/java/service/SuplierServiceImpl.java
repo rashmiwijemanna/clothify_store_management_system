@@ -20,7 +20,8 @@ public class SuplierServiceImpl implements SuplierService{
     }
 
     @Override
-    public void update(Suplier suplier) {
+    public void update(Suplier suplier) throws SQLException {
+        suplierRepositoryImpl.update(suplier);
 
     }
 

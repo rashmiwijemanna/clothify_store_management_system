@@ -109,7 +109,26 @@ public class SuplierManagementFormController implements Initializable {
     }
 
     @FXML
-    void updateBtn(ActionEvent event) {
+    void updateBtn(ActionEvent event) throws SQLException {
+        String id=supIdTxt.getText();
+        String name=supNameTxt.getText();
+        String title=supTitleTxt.getValue();
+        String email=supEmailTxt.getText();
+        String company=supCompanyTxt.getText();
+        String phoneNumber=subPhoneNumberTxt.getText();
+
+        Suplier suplier=new Suplier(
+                id,
+                name,
+                title,
+                email,
+                company,
+                phoneNumber
+        );
+        suplierService.update(suplier);
+        loadSupplierTbl();
+        clearFeilds();
+
 
     }
 

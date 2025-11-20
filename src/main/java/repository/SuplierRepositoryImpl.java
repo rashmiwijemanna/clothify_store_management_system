@@ -27,7 +27,18 @@ public class SuplierRepositoryImpl implements SuplierRepository {
     }
 
     @Override
-    public void update(Suplier suplier) {
+    public void update(Suplier suplier) throws SQLException {
+        String sql="UPDATE Supplier SET Name = ?, Title = ?, Email = ?, Company = ?, PhoneNumber = ? WHERE Id = ?";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setObject(1,suplier.getName());
+        preparedStatement.setObject(2,suplier.getTitle());
+        preparedStatement.setObject(3,suplier.getEmail());
+        preparedStatement.setObject(4,suplier.getCompany());
+        preparedStatement.setObject(5,suplier.getPhoneNumber());
+        preparedStatement.setObject(6,suplier.getId());
+        preparedStatement.executeUpdate();
+
 
     }
 
