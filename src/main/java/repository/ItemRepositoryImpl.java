@@ -36,8 +36,12 @@ public class ItemRepositoryImpl implements ItemRepository{
     }
 
     @Override
-    public ResultSet getAllItemDetails() {
-        return null;
+    public ResultSet getAllItemDetails() throws SQLException {
+        String sql="SELECT * FROM Item";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
     }
 
     @Override

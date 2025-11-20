@@ -20,7 +20,7 @@
       <TextField fx:id="itemIdTxt" layoutX="311.0" layoutY="165.0" />
       <Label layoutX="315.0" layoutY="223.0" text="Qty On Hand" textFill="WHITE" />
       <TextField fx:id="priceTxt" layoutX="71.0" layoutY="251.0" />
-      <TableView fx:id="suppliTbl" layoutX="101.0" layoutY="391.0" prefHeight="276.0" prefWidth="522.0">
+      <TableView fx:id="itemTbl" layoutX="101.0" layoutY="391.0" prefHeight="276.0" prefWidth="522.0">
          <columns>
             <TableColumn fx:id="itemIdCol" prefWidth="104.79998779296875" text="Item Id" />
             <TableColumn fx:id="itemNameCol" prefWidth="73.60003662109375" text="Name" />

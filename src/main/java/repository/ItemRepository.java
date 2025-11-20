@@ -9,6 +9,6 @@ public interface ItemRepository {
     void add(Item item) throws SQLException;
     void update(Item item);
     void delete(String id);
-    ResultSet getAllItemDetails();
+    ResultSet getAllItemDetails() throws SQLException;
     String getLastItemId();
 }

@@ -10,7 +10,7 @@ public interface ItemService {
     void add(Item item) throws SQLException;
     void update(Item item);
     void delete(String id);
-    ObservableList<Item>getAllItemDetails();
+    ObservableList<Item>getAllItemDetails() throws SQLException;
     String generateItemId();
 
 }

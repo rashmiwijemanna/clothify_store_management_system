@@ -53,7 +53,7 @@ public class SuplierServiceImpl implements SuplierService{
                     allSupplierDetails.getString("Title"),
                     allSupplierDetails.getString("Email"),
                     allSupplierDetails.getString("Company"),
-                    allSupplierDetails.getString("PhoneNumber")
+                    allSupplierDetails.getString("Id")
             ));
         }
             return supliers;

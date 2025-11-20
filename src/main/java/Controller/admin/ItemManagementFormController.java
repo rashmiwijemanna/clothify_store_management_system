@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Item;
 import model.Suplier;
 import service.ItemService;
@@ -60,7 +61,7 @@ public class ItemManagementFormController implements Initializable {
     private ComboBox<String> supIdTxt;
 
     @FXML
-    private TableView<?> suppliTbl;
+    private TableView<Item> itemTbl;
 
     @FXML
     private Label timeLbl;
@@ -86,6 +87,8 @@ public class ItemManagementFormController implements Initializable {
         );
 
         itemService.add(item);
+        loadItemTable();
+
 
     }
 
@@ -114,7 +117,40 @@ public class ItemManagementFormController implements Initializable {
         }
                 supIdTxt.setItems(supIds);
 
+                itemIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+                itemNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+                itemPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+                itemQtyCol.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+                supIdCol.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+
+        try {
+            loadItemTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        itemTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->{
+            if(newValue != null){
+                setSelectedValue(newValue);
+            }
+        } );
 
 
     }
+
+    private void loadItemTable() throws SQLException {
+        itemTbl.setItems(itemService.getAllItemDetails());
+
+    }
+
+    private  void setSelectedValue(Item selectedValue){
+        itemIdTxt.setText(selectedValue.getId());
+        itemNameTxt.setText(selectedValue.getName());
+        priceTxt.setText(String.valueOf(selectedValue.getPrice()));
+        QtyTxt.setText(String.valueOf(selectedValue.getQty()));
+        supIdTxt.setValue(selectedValue.getSupplierId());
+
+
+    }
+
 }
