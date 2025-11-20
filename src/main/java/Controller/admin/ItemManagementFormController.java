@@ -88,6 +88,7 @@ public class ItemManagementFormController implements Initializable {
 
         itemService.add(item);
         loadItemTable();
+        clearFeilds();
 
 
     }
@@ -96,6 +97,7 @@ public class ItemManagementFormController implements Initializable {
     void deleteBtn(ActionEvent event) throws SQLException {
         itemService.delete(itemIdTxt.getText());
         loadItemTable();
+        clearFeilds();
 
     }
 
@@ -154,5 +156,13 @@ public class ItemManagementFormController implements Initializable {
 
 
     }
+    private void clearFeilds(){
+        supIdTxt.setItems(null);
+        itemIdTxt.setText(null);
+        itemNameTxt.setText(null);
+        priceTxt.setText(null);
+        QtyTxt.setText(null);
+    }
+
 
 }
