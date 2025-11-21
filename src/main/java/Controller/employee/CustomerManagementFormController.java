@@ -62,9 +62,17 @@ public class CustomerManagementFormController implements Initializable {
     CustomerService customerService=new CustomerServiceImpl();
 
     @FXML
-    void addNewCustomerBtn(ActionEvent event) throws IOException {
+    void addNewCustomerBtn(ActionEvent event) throws IOException, SQLException {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddCustomerForm.fxml"))));
         stage.show();
+        stage.setOnHiding(windowEvent -> {
+            try {
+                loadCustomerTbl();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
 
 
     }
