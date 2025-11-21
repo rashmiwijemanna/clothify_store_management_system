@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="547.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.employee.CustomerManagementFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020c15" height="547.0" stroke="BLACK" strokeType="INSIDE" width="669.0" />
-      <Label fx:id="dateLbl" layoutX="287.0" layoutY="57.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
-      <Label fx:id="timeLbl" layoutX="98.0" layoutY="66.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020c15" height="733.0" stroke="BLACK" strokeType="INSIDE" width="856.0" />
+      <Label fx:id="dateLbl" layoutX="327.0" layoutY="97.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
+      <Label fx:id="timeLbl" layoutX="138.0" layoutY="106.0" prefHeight="18.0" prefWidth="95.0" textFill="WHITE" />
+      <TableView fx:id="customerTblEmp" layoutX="16.0" layoutY="226.0" prefHeight="365.0" prefWidth="831.0">
+         <columns>
+            <TableColumn fx:id="custIdCol" prefWidth="104.79998779296875" text="Customer Id" />
+            <TableColumn fx:id="custTitleCol" prefWidth="73.60003662109375" text="Title" />
+            <TableColumn fx:id="custNameCol" minWidth="9.60003662109375" prefWidth="109.5999755859375" text="Name" />
+            <TableColumn fx:id="custDobCol" prefWidth="114.4000244140625" text="DOB" />
+            <TableColumn fx:id="custPhoneNumberCol" minWidth="9.60003662109375" prefWidth="116.0" text="Phone Number" />
+            <TableColumn fx:id="custEmailCol" minWidth="9.60003662109375" prefWidth="102.4000244140625" text="Email" />
+            <TableColumn fx:id="custAddressCol" minWidth="9.60003662109375" prefWidth="129.60003662109375" text="Address" />
+            <TableColumn fx:id="custCityCol" minWidth="9.60003662109375" prefWidth="74.4000244140625" text="City" />
+         </columns>
+      </TableView>
+      <TextField layoutX="27.0" layoutY="151.0" promptText="search" />
+      <Button layoutX="657.0" layoutY="164.0" mnemonicParsing="false" onAction="#addNewCustomerBtn" text="Add New Customer" />
    </children>
 </AnchorPane>
