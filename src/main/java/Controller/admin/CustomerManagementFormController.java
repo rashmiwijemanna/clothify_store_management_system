@@ -108,6 +108,7 @@ public class CustomerManagementFormController implements Initializable {
        );
        customerService.add(customer1);
        loadTable();
+       clearFeilds();
 
 
 
@@ -171,5 +172,15 @@ public class CustomerManagementFormController implements Initializable {
     private void loadTable() throws SQLException {
 
         customerTbl.setItems(customerService.getAllCustDetails());
+    }
+    private void clearFeilds(){
+        custIdTxt.setText(null);
+        custTitle.setValue(null);
+        custNameTxt.setText(null);
+        custDOBTxt.setValue(null);
+        custPhoneNumberTxt.setText(null);
+        custEmailTxt.setText(null);
+        custAddressTxt.setText(null);
+        custCity.setText(null);
     }
 }
