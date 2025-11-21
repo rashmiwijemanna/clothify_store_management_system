@@ -9,6 +9,6 @@ public interface CustomerService {
     void add(Customer customer) throws SQLException;
     void delete(String id) throws SQLException;
     void update(Customer customer) throws SQLException;
-    String generateCustId();
+    String generateCustId() throws SQLException;
     ObservableList<Customer>getAllCustDetails() throws SQLException;
 }

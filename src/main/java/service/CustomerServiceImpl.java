@@ -34,8 +34,14 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public String generateCustId() {
-        return "";
+    public String generateCustId() throws SQLException {
+        String lastCustId = customerRepositoryImpl.getLastCustId();
+        if(lastCustId == null){
+            return "C001";
+        }
+        int number=Integer.parseInt(lastCustId.substring(1));
+        number++;
+        return String.format("C%03d",number);
     }
 
     @Override

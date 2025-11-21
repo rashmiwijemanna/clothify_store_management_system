@@ -38,7 +38,7 @@
       <TextField fx:id="custPhoneNumberTxt" layoutX="321.0" layoutY="261.0" />
       <Label layoutX="527.0" layoutY="153.0" text="Name" textFill="WHITE" />
       <TextField fx:id="custNameTxt" layoutX="520.0" layoutY="175.0" />
-      <TextField fx:id="custIdTxt" layoutX="74.0" layoutY="175.0" />
+      <TextField fx:id="custIdTxt" editable="false" layoutX="74.0" layoutY="175.0" />
       <Label layoutX="525.0" layoutY="242.0" text="Email" textFill="WHITE" />
       <TextField fx:id="custEmailTxt" layoutX="520.0" layoutY="261.0" />
       <Label layoutX="86.0" layoutY="309.0" text="Address" textFill="WHITE" />

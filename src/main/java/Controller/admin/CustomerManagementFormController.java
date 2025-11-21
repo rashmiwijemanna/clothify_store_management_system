@@ -109,6 +109,7 @@ public class CustomerManagementFormController implements Initializable {
        customerService.add(customer1);
        loadTable();
        clearFeilds();
+       generateCustId();
 
 
 
@@ -120,6 +121,7 @@ public class CustomerManagementFormController implements Initializable {
         customerService.delete(custIdTxt.getText());
         loadTable();
         clearFeilds();
+        generateCustId();
 
     }
 
@@ -147,6 +149,7 @@ public class CustomerManagementFormController implements Initializable {
         customerService.update(customer1);
         loadTable();
         clearFeilds();
+        generateCustId();
 
     }
 
@@ -158,6 +161,11 @@ public class CustomerManagementFormController implements Initializable {
 
         );
         custTitle.setItems(types);
+        try {
+            generateCustId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         custIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         custTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -207,5 +215,9 @@ public class CustomerManagementFormController implements Initializable {
         custEmailTxt.setText(null);
         custAddressTxt.setText(null);
         custCity.setText(null);
+    }
+    private void generateCustId() throws SQLException {
+
+        custIdTxt.setText(customerService.generateCustId());
     }
 }
