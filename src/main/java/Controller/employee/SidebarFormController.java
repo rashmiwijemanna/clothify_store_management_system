@@ -15,23 +15,10 @@ public class SidebarFormController implements Initializable {
     @FXML
     private AnchorPane loadUi;
 
-
-
-
-
-
-
     @FXML
     void customerManagementBtn(ActionEvent event) throws IOException {
-       AnchorPane pane=FXMLLoader.load(getClass().getResource("/view/CustomerManagementEmp.fxml"));
-       loadUi.getChildren().setAll(pane);
-
-
-
-    }
-
-    @FXML
-    void itemManagementBtn(ActionEvent event) {
+        AnchorPane pane= FXMLLoader.load(getClass().getResource("/view/CustomerManagementEmp.fxml"));
+        loadUi.getChildren().setAll(pane);
 
     }
 
@@ -41,24 +28,23 @@ public class SidebarFormController implements Initializable {
     }
 
     @FXML
-     void viewOrderBtn(ActionEvent actionEvent) {
+    void reportViewBtn(ActionEvent event) {
+
     }
 
+    @FXML
+    void viewOrderHisory(ActionEvent event) {
 
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AnchorPane pane= null;
         try {
             pane = FXMLLoader.load(getClass().getResource("/view/CustomerManagementEmp.fxml"));
-            loadUi.getChildren().setAll(pane);
-
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        loadUi.getChildren().setAll(pane);
     }
-
-
 }

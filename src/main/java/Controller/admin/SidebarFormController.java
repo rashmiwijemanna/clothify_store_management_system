@@ -35,7 +35,9 @@ public class SidebarFormController implements Initializable {
     }
 
     @FXML
-    void itemManagementBtn(ActionEvent event) {
+    void itemManagementBtn(ActionEvent event) throws IOException {
+        AnchorPane pane=FXMLLoader.load(getClass().getResource("/view/Admin/ItemManagement.fxml"));
+        loadUi.getChildren().setAll(pane);
 
     }
 

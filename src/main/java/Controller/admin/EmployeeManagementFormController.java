@@ -94,10 +94,7 @@ public class EmployeeManagementFormController implements Initializable {
 
     }
 
-    @FXML
-    void clearBtn(ActionEvent event) {
 
-    }
 
     @FXML
     void deleteBtn(ActionEvent event) throws SQLException {
