@@ -38,8 +38,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public ResultSet getAllCustomerDetails() {
-        return null;
+    public ResultSet getAllCustomerDetails() throws SQLException {
+
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Customer");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
     }
 
     @Override

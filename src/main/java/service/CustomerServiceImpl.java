@@ -8,6 +8,7 @@ import repository.CustomerRepositoryImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class CustomerServiceImpl implements CustomerService{
     CustomerRepositoryImpl customerRepositoryImpl=new CustomerRepositoryImpl();
@@ -36,7 +37,22 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public ObservableList<Customer> getAllCustDetails() {
-        return null;
+    public ObservableList<Customer> getAllCustDetails() throws SQLException {
+        ResultSet allCustomerDetails = customerRepositoryImpl.getAllCustomerDetails();
+        customer.clear();
+        while (allCustomerDetails.next()){
+            customer.add(new Customer(
+                    allCustomerDetails.getString("CustId"),
+                    allCustomerDetails.getString("CustTitle"),
+                    allCustomerDetails.getString("CustName"),
+                    allCustomerDetails.getDate("DOB").toLocalDate(),
+                    allCustomerDetails.getString("PhoneNumber"),
+                    allCustomerDetails.getString("Email"),
+                    allCustomerDetails.getString("CustAddress"),
+                    allCustomerDetails.getString("City")
+            ));
+        }
+        return customer;
+
     }
 }

@@ -10,5 +10,5 @@ public interface CustomerService {
     void delete(String id);
     void update(Customer customer);
     String generateCustId();
-    ObservableList<Customer>getAllCustDetails();
+    ObservableList<Customer>getAllCustDetails() throws SQLException;
 }

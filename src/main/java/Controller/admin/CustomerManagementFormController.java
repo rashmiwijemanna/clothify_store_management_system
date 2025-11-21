@@ -4,20 +4,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import service.CustomerService;
 import service.CustomerServiceImpl;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class CustomerManagementFormController {
+public class CustomerManagementFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> custAddressCol;
@@ -62,13 +66,13 @@ public class CustomerManagementFormController {
     private TextField custPhoneNumberTxt;
 
     @FXML
-    private ComboBox<?> custTitle;
+    private ComboBox<String> custTitle;
 
     @FXML
     private TableColumn<?, ?> custTitleCol;
 
     @FXML
-    private TableView<?> customerTbl;
+    private TableView<Customer> customerTbl;
 
     @FXML
     private Label dateLbl;
@@ -103,6 +107,7 @@ public class CustomerManagementFormController {
                city
        );
        customerService.add(customer1);
+       loadTable();
 
 
 
@@ -119,4 +124,52 @@ public class CustomerManagementFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String >types=FXCollections.observableArrayList(
+                "Mr",
+                "Ms"
+
+        );
+        custTitle.setItems(types);
+
+        custIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        custTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        custNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        custDobCol.setCellValueFactory(new PropertyValueFactory<>("DOB"));
+        custPhoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        custEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        custCityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+
+        try {
+            loadTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        customerTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->{
+            if(newValue != null){
+                setSelectedValue(newValue);
+            }
+        } );
+
+    }
+    private void setSelectedValue(Customer selectedValue){
+        custIdTxt.setText(selectedValue.getId());
+        custTitle.setValue(selectedValue.getTitle());
+        custNameTxt.setText(selectedValue.getName());
+        custDOBTxt.setValue(selectedValue.getDOB());
+        custPhoneNumberTxt.setText(selectedValue.getPhoneNumber());
+        custEmailTxt.setText(selectedValue.getEmail());
+        custAddressTxt.setText(selectedValue.getAddress());
+        custCity.setText(selectedValue.getCity());
+
+
+    }
+
+    private void loadTable() throws SQLException {
+
+        customerTbl.setItems(customerService.getAllCustDetails());
+    }
 }
