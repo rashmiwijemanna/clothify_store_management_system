@@ -71,6 +71,25 @@ public class CustomerManagementFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        custIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        custTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        custNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        custDobCol.setCellValueFactory(new PropertyValueFactory<>("DOB"));
+        custPhoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        custEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        custCityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        try {
+            loadCustomerTbl();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    private void loadCustomerTbl() throws SQLException {
+        customers.clear();
+        customers.addAll(customerService.getAllCustDetails());
+        customerTblEmp.setItems(customers);
 
     }
 }
