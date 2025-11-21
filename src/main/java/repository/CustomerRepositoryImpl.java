@@ -28,7 +28,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws SQLException {
+        String sql="DELETE FROM Customer WHERE CustId = ?";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1,id);
+        preparedStatement.executeUpdate();
 
     }
 

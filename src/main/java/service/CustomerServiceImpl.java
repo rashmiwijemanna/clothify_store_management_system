@@ -22,7 +22,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws SQLException {
+        customerRepositoryImpl.delete(id);
 
     }
 

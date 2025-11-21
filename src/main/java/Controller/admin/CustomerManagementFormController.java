@@ -116,7 +116,10 @@ public class CustomerManagementFormController implements Initializable {
     }
 
     @FXML
-    void deleteBtn(ActionEvent event) {
+    void deleteBtn(ActionEvent event) throws SQLException {
+        customerService.delete(custIdTxt.getText());
+        loadTable();
+        clearFeilds();
 
     }
 
