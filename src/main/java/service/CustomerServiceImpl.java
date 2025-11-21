@@ -28,7 +28,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void update(Customer customer) {
+    public void update(Customer customer) throws SQLException {
+        customerRepositoryImpl.update(customer);
 
     }
 
@@ -42,11 +43,13 @@ public class CustomerServiceImpl implements CustomerService{
         ResultSet allCustomerDetails = customerRepositoryImpl.getAllCustomerDetails();
         customer.clear();
         while (allCustomerDetails.next()){
+            java.sql.Date sqlDate=allCustomerDetails.getDate("DOB");
+            LocalDate dob= (sqlDate != null) ? sqlDate.toLocalDate() : null;
             customer.add(new Customer(
                     allCustomerDetails.getString("CustId"),
                     allCustomerDetails.getString("CustTitle"),
                     allCustomerDetails.getString("CustName"),
-                    allCustomerDetails.getDate("DOB").toLocalDate(),
+                    dob,
                     allCustomerDetails.getString("PhoneNumber"),
                     allCustomerDetails.getString("Email"),
                     allCustomerDetails.getString("CustAddress"),
@@ -56,7 +59,5 @@ public class CustomerServiceImpl implements CustomerService{
         return customer;
 
     }
-    private void clearFeilds(){
 
-    }
 }

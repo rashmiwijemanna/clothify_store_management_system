@@ -38,7 +38,19 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public void update(Customer customer) {
+    public void update(Customer customer) throws SQLException {
+        String sql="UPDATE Customer SET CustTitle = ?, CustName= ?, DOB = ?, PhoneNumber = ?, Email = ?, CustAddress = ?, City = ? WHERE CustId = ?";
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setObject(1,customer.getTitle());
+        preparedStatement.setObject(2,customer.getName());
+        preparedStatement.setObject(3,customer.getDOB());
+        preparedStatement.setObject(4,customer.getPhoneNumber());
+        preparedStatement.setObject(5,customer.getEmail());
+        preparedStatement.setObject(6,customer.getAddress());
+        preparedStatement.setObject(7,customer.getCity());
+        preparedStatement.setObject(8,customer.getId());
+        preparedStatement.executeUpdate();
 
     }
 
@@ -52,7 +64,15 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public String getLastCustId() {
-        return "";
+    public String getLastCustId() throws SQLException {
+      String sql="SELECT CustId FROM Customer ORDER BY CustId DESC LIMIT 1";
+      Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+
     }
 }

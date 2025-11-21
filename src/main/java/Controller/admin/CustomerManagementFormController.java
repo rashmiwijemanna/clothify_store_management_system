@@ -90,7 +90,7 @@ public class CustomerManagementFormController implements Initializable {
         String id= custIdTxt.getText();
         String titile= String.valueOf(custTitle.getValue());
         String name=custNameTxt.getText();
-       LocalDate dob= custDOBTxt.getValue();
+        LocalDate dob= custDOBTxt.getValue();
        String phoneNumber=custPhoneNumberTxt.getText();
        String email=custEmailTxt.getText();
        String address=custAddressTxt.getText();
@@ -124,7 +124,29 @@ public class CustomerManagementFormController implements Initializable {
     }
 
     @FXML
-    void updateBtn(ActionEvent event) {
+    void updateBtn(ActionEvent event) throws SQLException {
+        String id=custIdTxt.getText();
+        String title=custTitle.getValue();
+        String name=custNameTxt.getText();
+        LocalDate DOB= custDOBTxt.getValue();
+        String phoneNumber=custPhoneNumberTxt.getText();
+        String email=custEmailTxt.getText();
+        String address=custAddressTxt.getText();
+        String city=custCity.getText();
+
+        Customer customer1=new Customer(
+                id,
+                title,
+                name,
+                DOB,
+                phoneNumber,
+                email,
+                address,
+                city
+        );
+        customerService.update(customer1);
+        loadTable();
+        clearFeilds();
 
     }
 
