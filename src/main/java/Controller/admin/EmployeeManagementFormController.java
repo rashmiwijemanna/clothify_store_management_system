@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class EmployeeManagementFormController implements Initializable {
     ObservableList<Employee>employees= FXCollections.observableArrayList();
-    EmployeeService employeeService=new EmployeeServiceImpl();
+    EmployeeService employeeService=new EmployeeServiceImpl(); //global scope
 
     @FXML
     private TableColumn<?, ?> addressCol;

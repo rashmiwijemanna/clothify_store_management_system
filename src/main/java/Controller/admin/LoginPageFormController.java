@@ -23,7 +23,7 @@ public class LoginPageFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        String videoPath=getClass().getResource("/image/loginanimate.mp4").toExternalForm();
+        String videoPath=getClass().getResource("/image/loginanimate - Copy2.mp4").toExternalForm();
 
         Media media=new Media(videoPath);
         MediaPlayer mediaPlayer=new MediaPlayer(media);
